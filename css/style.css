@@ -28,7 +28,7 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 77%;
+    width: 79%;
     height: 95%;
 }
 
@@ -119,10 +119,37 @@ body {
 .right-column {
     width: 65%;
     border-left: 1px solid #d8d8d8;
-    background-image: url(../img/mine.jpg);
 }
 
 .right-column .access {
     font-size: 10px;
     color: #717a7c;
+}
+
+.chat-section{
+    height: calc(100% - 100px);
+    background-image: url(../img/mine.jpg);
+    overflow: auto;
+}
+
+.message-section {
+    background-color: #f3eeea;
+    padding: 9px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.message-section .icons i {
+    color: #717a7c;
+    padding: 0px 10px 0px 10px;
+}
+
+.message-section input{
+    border: 0;
+    font-size: 10px;
+    width: 83%;
+    vertical-align: 2px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0px 10px 0px 10px;
 }
