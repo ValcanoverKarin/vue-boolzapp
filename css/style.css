@@ -52,7 +52,7 @@ body {
     align-items: center;
 }
 
-.avatar img {
+.user-section .avatar img {
     width: 35px;
     border-radius: 50%;
     margin-right: 5px;
@@ -115,10 +115,31 @@ body {
     vertical-align: 2px;
 }
 
+.contacts-section {
+    overflow-y: auto;
+    height: calc(100% - 146px);
+}
+
+.contacts-section .avatar img {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.contacts-section .avatar {
+    padding: 5px 15px 5px 15px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.contacts-section .avatar:hover { 
+    background-color: #e9ebea;
+}
+
+
 /*COLONNA DESTRA*/
 .right-column {
     width: 65%;
-    border-left: 1px solid #d8d8d8;
+    border-left: 1px solid #d6d6d6;
 }
 
 .right-column .access {
