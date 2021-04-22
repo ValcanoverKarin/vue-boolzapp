@@ -32,7 +32,7 @@ body {
     height: 95%;
 }
 
-/*colonna sinistra*/
+/*COLONNA SINISTRA*/
 /*sezione user*/
 .left-column {
     width: 35%;
@@ -111,6 +111,18 @@ body {
 .search-section input{
     border: 0;
     font-size: 10px;
-    width: 200px;
+    width: 150px;
     vertical-align: 2px;
+}
+
+/*COLONNA DESTRA*/
+.right-column {
+    width: 65%;
+    border-left: 1px solid #d8d8d8;
+    background-image: url(../img/mine.jpg);
+}
+
+.right-column .access {
+    font-size: 10px;
+    color: #717a7c;
 }
