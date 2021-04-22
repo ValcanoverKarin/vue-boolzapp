@@ -75,33 +75,17 @@
 
                 <!--sezione contatti-->
                 <div class="contacts-section">
-                    <!--user-->
-                    <div class="avatar">
-                        <img src="img/avatar_io.jpg" alt="Avatar User">
-                        <div class="text">Nome Utente</div>
-                    </div>
-                    <!--end user-->
-
-                    <!--user-->
-                    <div class="avatar">
-                        <img src="img/avatar_io.jpg" alt="Avatar User">
-                        <div class="text">Nome Utente</div>
-                    </div>
-                    <!--end user-->
-
-                    <!--user-->
-                    <div class="avatar">
-                        <img src="img/avatar_io.jpg" alt="Avatar User">
-                        <div class="text">Nome Utente</div>
-                    </div>
-                    <!--end user-->
-
-                    <!--user-->
-                    <div class="avatar">
-                        <img src="img/avatar_io.jpg" alt="Avatar User">
-                        <div class="text">Nome Utente</div>
-                    </div>
-                    <!--end user-->
+                    <ul>
+                        <!-------1b. aggiunto il v-for ------>
+                        <li v-for="contact in contacts">
+                            <!--user-->
+                            <div class="avatar">
+                                <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
+                                <div class="text">{{ contact.name }}</div>
+                            </div>
+                            <!--end user--> 
+                        </li>
+                    </ul>
                 </div>
                 <!--end sezione contatti-->
 
