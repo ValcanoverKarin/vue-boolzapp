@@ -125,11 +125,22 @@ var app = new Vue (
                     };
                     //4c. aggiungo il nuovo oggetto nei messaggi
                     this.contacts[this.activeContact].messages.push(newMessageUser);
-                    
                     //4d. svuoto la input del nuovo messaggio
                     this.newMessage = '';
-                }    
-            }
-        },
+
+                    //5a. creo la funzione setTimeout per inviare un messaggio di risposta (ok) dopo 1 secondo
+                    setTimeout( () => {
+                        //5b. Creo il nuovo oggetto di risposta dai contatti
+                        let newContactMessage = {
+                            date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                            text: 'Ok',
+                            status: 'received'
+                        };
+                        //5d.  aggiungo il nuovo oggetto nei messaggi
+                        this.contacts[this.activeContact].messages.push(newContactMessage );
+                    } ,1000 );
+                }  
+            },
+        }
     }
 );
