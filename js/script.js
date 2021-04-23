@@ -6,10 +6,18 @@
 // 2. Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all’interno del pannello della conversazione
 // 3. Click sul contatto mostra la conversazione del contatto cliccato
 
+// Milestone 3
+// 4. Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde
+// 5. Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
+
+// Milestone 4
+// 6. Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+
 var app = new Vue (
     {
         el: '#root',
         data: {
+            newMessage: '',
             //1c. creao array 
             activeContact: 0,
             //1a. aggiunto i contatti con le loro caratteristiche
@@ -104,7 +112,24 @@ var app = new Vue (
             //3b. quando clicco su un contatto voglio che si cambi il contatto attivo
             setActiveContact(index) {
                 this.activeContact = index;
+            },
+
+            //4a. creo funzione che crea un nuovo oggetto e lo aggiunge ai messaggi dell utente attivo 
+            sendNewMessage () {
+                if ( this.newMessage != '' ) {
+                    //4b. Creo un nuovo oggetto con la data (usando dayjs) e il nuovo messaggio 
+                    let newMessageUser = {
+                        text: this.newMessage,
+                        status: 'sent',
+                        date: dayjs().format('DD/MM/YYYY HH:mm:ss')
+                    };
+                    //4c. aggiungo il nuovo oggetto nei messaggi
+                    this.contacts[this.activeContact].messages.push(newMessageUser);
+                    
+                    //4d. svuoto la input del nuovo messaggio
+                    this.newMessage = '';
+                }    
             }
-        }
+        },
     }
 );

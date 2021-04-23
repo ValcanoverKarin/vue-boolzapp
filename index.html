@@ -138,9 +138,9 @@
                 <!--sezione messaggi-->
                 <div class="message-section">
                    <div class="icons">
-                    <i class="far fa-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio">
-                    <i class="fas fa-microphone"></i>
+                        <i class="far fa-smile"></i>
+                        <input @keyup.enter="sendNewMessage" v-model="newMessage" type="text" placeholder="Scrivi un messaggio">
+                        <i class="fas fa-microphone"></i>
                    </div>
                 </div>
                 <!--end sezione messaggi-->
@@ -151,6 +151,8 @@
        
     </div>
 
+
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
