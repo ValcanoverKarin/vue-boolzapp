@@ -77,10 +77,13 @@
                 <div class="contacts-section">
                     <ul>
                         <!-------1b. aggiunto il v-for ------>
-                        <li v-for="contact in contacts">
+                        <!-------1d. aggiunto l' indice e l elemento ha classe active se l'indice corrisponde all'indice del contatto attivo------>
+                        <!-------3a. aggiungo click chiamando la funzione (questa funzione cmbia il contatto attivo)------>
+                        <!-------3c. passo l'ndice al click------>
+                        <li v-for="(contact,index) in contacts" :class="{ 'active': activeContact == index }" @click="setActiveContact(index)">
                             <!--user-->
                             <div class="avatar">
-                                <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
+                                <img :src="`img/avatar${contact.avatar}.jpg`" alt="contact.name">
                                 <div class="text">{{ contact.name }}</div>
                             </div>
                             <!--end user--> 
@@ -99,9 +102,10 @@
                 <div class="user-section">
                     <!--user-->
                     <div class="avatar">
-                        <img src="img/avatar_1.jpg" alt="Avatar User">
+                        <!-------1e. mostro le caratteristiche del contatto attivo ------>
+                        <img :src="`img/avatar${contacts[activeContact].avatar}.jpg`" alt="contacts[activeContact].name">
                         <div>
-                            <div class="text">Michele</div>
+                            <div class="text">{{ contacts[activeContact].name }}</div>
                             <div class="access">Ultimo accesso oggi alle</div>
                         </div>
                     </div>
@@ -118,16 +122,14 @@
                 <!--end sezione user-->
 
                 <!--sezione chat-->
-                <div class="chat-section">
+                <div class="messages">
                     <!--messaggi contatti-->
-                    <div class="chat-contact">
-                        <div class="text">La Marianna va in campagna</div>
-                    </div>
-                    <!--end messaggi contatti-->
-
-                    <!--messaggi utente-->
-                    <div class="chat-user">
-                        <div class="text">Sicuro di non aver sbagliato chat?</div>
+                    <!-------2a. aggiungo v-for per scrivere tanti messaggi per quanti ne ho nell oggetto------>
+                    <!-------2b. stampo il messaggio e la data rispettivi all oggetto------>
+                    <!-------2c. tolgo la classe recived statitca e la sostituisco con la classe status dinamica dall oggetto ------>
+                    <div v-for="message in contacts[activeContact].messages" class="message" :class="message.status" >
+                        <div class="text">{{ message.text }}</div>
+                        <div class="date">{{ message.date }}</div>
                     </div>
                     <!--end messaggi contatti-->
                 </div>
@@ -149,8 +151,6 @@
        
     </div>
 
-
-    <script src="path/to/dayjs/dayjs.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

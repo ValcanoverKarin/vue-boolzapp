@@ -1,7 +1,17 @@
+// Milestone 1
+// 0. Replica della grafica con la possibilità di avere messaggi scritti dall’utente (verdi) e dall’interlocutore (bianco) assegnando due classi CSS diverse
+// 1. Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto
+
+// Milestone 2
+// 2. Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all’interno del pannello della conversazione
+// 3. Click sul contatto mostra la conversazione del contatto cliccato
+
 var app = new Vue (
     {
         el: '#root',
         data: {
+            //1c. creao array 
+            activeContact: 0,
             //1a. aggiunto i contatti con le loro caratteristiche
             contacts: [
                 {
@@ -87,8 +97,14 @@ var app = new Vue (
                         }
                     ],
                 },
-            ]            
-            
+            ]             
+        },
+
+        methods: {
+            //3b. quando clicco su un contatto voglio che si cambi il contatto attivo
+            setActiveContact(index) {
+                this.activeContact = index;
+            }
         }
     }
 );
