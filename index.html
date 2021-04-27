@@ -68,7 +68,10 @@
                 <div class="search-section">
                     <div class="search-background">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <!-------6b. aggiunto l' id e il v-model ------>
+                        <!-------6d. aggiunto keyup ------>
+                        <input id="cont-filter" type="text" placeholder="Cerca o inizia una nuova chat"
+                               v-model="userFilter" @keyup="filterContacts">
                     </div>
                 </div>
                 <!--end sezione cerca-->
@@ -80,7 +83,10 @@
                         <!-------1d. aggiunto l' indice e l elemento ha classe active se l'indice corrisponde all'indice del contatto attivo------>
                         <!-------3a. aggiungo click chiamando la funzione (questa funzione cmbia il contatto attivo)------>
                         <!-------3c. passo l'ndice al click------>
-                        <li v-for="(contact,index) in contacts" :class="{ 'active': activeContact == index }" @click="setActiveContact(index)">
+                        <!-------6a. stampo un elemento solo se è visibile con v-if------>
+                        <li v-for="(contact,index) in contacts"
+                            v-if="contact.visible"
+                            :class="{ 'active': activeContact == index }" @click="setActiveContact(index)">
                             <!--user-->
                             <div class="avatar">
                                 <img :src="`img/avatar${contact.avatar}.jpg`" alt="contact.name">

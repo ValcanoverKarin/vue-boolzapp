@@ -20,6 +20,8 @@ var app = new Vue (
             newMessage: '',
             //1c. creao array 
             activeContact: 0,
+            //6c. aggiungo userFilter
+            userFilter: '',
             //1a. aggiunto i contatti con le loro caratteristiche
             contacts: [
                 {
@@ -115,7 +117,7 @@ var app = new Vue (
             },
 
             //4a. creo funzione che crea un nuovo oggetto e lo aggiunge ai messaggi dell utente attivo 
-            sendNewMessage () {
+            sendNewMessage() {
                 if ( this.newMessage != '' ) {
                     //4b. Creo un nuovo oggetto con la data (usando dayjs) e il nuovo messaggio 
                     let newMessageUser = {
@@ -141,6 +143,25 @@ var app = new Vue (
                     } ,1000 );
                 }  
             },
+
+            //6e. aggiungo la funzione per filtrare i contatti
+            filterContacts() {
+                //6f. Per evitare il problema con le maiuscole porto le stringhe tutte nel formato minuscolo con lowercase
+                const userFilterLowercase = this.userFilter.toLowerCase();
+
+                this.contacts.forEach((contact) => {
+                    //6g. porto i nomi tutti nel formato minuscolo con lowercase
+                    const contactNameLowercase = contact.name.toLowerCase();
+                    //6f. verifico che il nome contenga cio che l utente inserisce nella imput
+                    //    se il nome contiene cio che è stato inserito nella imput visible = true
+                    //    se non è contenuto è false
+                    if( contactNameLowercase.includes(userFilterLowercase)){
+                        contact.visible = true;
+                    } else {
+                        contact.visible = false;
+                    }
+                });
+            }
         }
     }
 );
